@@ -53,8 +53,7 @@ module JserrorRails
                                         error_message: e.message, 
                                         error_name: e.name, 
                                         code_block: '#{old_lines.join('').gsub("\n", '[::n::]').gsub('\'', '')}', 
-                                        arguments: [#{arguments.join(', ')}], 
-                                        source: $('*').html()
+                                        arguments: [#{arguments.join(', ')}]
                             });"
           
             new_code_lines << "#{tabs}\t} catch (e) { \n#{tabs}\t\t#{console_line}\n#{tabs}\t}\n"
@@ -107,8 +106,7 @@ module JserrorRails
                                         error_message: e.message, 
                                         error_name: e.name, 
                                         code_block: '#{old_lines.join('').gsub("\n", '[::n::]').gsub('\'', '')}', 
-                                        arguments: [#{arguments.join(', ')}], 
-                                        source: $('*').html()
+                                        arguments: [#{arguments.join(', ')}]
                             });"
           
             new_code_lines << "#{tabs}\t} catch (e) { \n#{tabs}\t\t#{console_line}\n#{tabs}\t}\n"
@@ -129,7 +127,7 @@ module JserrorRails
       
       output = "try {"
       output << data_copy
-      output << "} catch (e) { javascript_error({name: 'unfound javascript error', error_message: e.message, error_name: e.name, code_block: '#{scope.logical_path.to_s}', arguments: [], source: $('*').html()}); }"
+      output << "} catch (e) { javascript_error({name: 'unfound javascript error', error_message: e.message, error_name: e.name, code_block: '#{scope.logical_path.to_s}', arguments: []}); }"
       output
     end
   end
